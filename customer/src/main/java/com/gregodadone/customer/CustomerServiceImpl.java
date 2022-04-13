@@ -2,12 +2,15 @@ package com.gregodadone.customer;
 
 import com.gregodadone.clients.fraud.FraudCheckResponse;
 import com.gregodadone.clients.fraud.FraudClient;
+import com.gregodadone.clients.fraud.NotificationClient;
+import com.gregodadone.clients.fraud.NotificationRequest;
 import org.springframework.stereotype.Service;
 
 @Service
 public record CustomerServiceImpl(
         CustomerRepository customerRepository,
-        FraudClient fraudClient
+        FraudClient fraudClient,
+        NotificationClient notificationClient
 ) implements CustomerService {
     @Override
     public void registerCustomer(CustomerRegistrationRequest request) {
@@ -24,5 +27,7 @@ public record CustomerServiceImpl(
         if (fraudCheckResponse.isFraudster()) {
             throw new IllegalStateException("fraudster");
         }
+
+        notificationClient.sendNotification(new NotificationRequest("Not fraudster"));
     }
 }

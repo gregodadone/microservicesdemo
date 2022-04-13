@@ -1,5 +1,6 @@
 package com.gregodadone.fraud;
 
+import com.gregodadone.clients.fraud.FraudCheckResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;

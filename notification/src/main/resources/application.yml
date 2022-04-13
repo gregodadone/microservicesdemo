@@ -1,10 +1,10 @@
 server:
-  port: 8086
+  port: 8082
 spring:
   application:
     name: notification
   datasource:
-    url: jdcb:postgresql//localhost:5432/notification
+    url: jdbc:postgresql://localhost:5432/notification
     username: gregodadone
     password: password
   jpa:

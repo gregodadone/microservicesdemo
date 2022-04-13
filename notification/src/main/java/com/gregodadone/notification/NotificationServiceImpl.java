@@ -8,7 +8,7 @@ public record NotificationServiceImpl(
         NotificationRepository notificationRepository
 ) implements NotificationService {
     @Override
-    public void sendNotification(NotificationRequest notificationRequest) {
+    public void send(NotificationRequest notificationRequest) {
         Notification notification = Notification.builder()
                 .text(notificationRequest.text())
                 .build();

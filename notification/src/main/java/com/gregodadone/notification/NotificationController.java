@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public record NotificationController(NotificationService notificationService) {
     @PostMapping
     public void sendNotification(@RequestBody NotificationRequest notificationRequest) {
-        log.info("sending notification: {}", notificationRequest);
-        notificationService.sendNotification(notificationRequest);
+        log.info("New notification: {}", notificationRequest);
+        notificationService.send(notificationRequest);
     }
 }

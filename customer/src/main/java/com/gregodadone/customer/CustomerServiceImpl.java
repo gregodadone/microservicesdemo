@@ -24,10 +24,15 @@ public record CustomerServiceImpl(
 
         FraudCheckResponse fraudCheckResponse = fraudClient.isFraudster(customer.getId());
 
-        if (fraudCheckResponse.isFraudster()) {
+        if (Boolean.TRUE.equals(fraudCheckResponse.isFraudster())) {
             throw new IllegalStateException("fraudster");
         }
 
-        notificationClient.sendNotification(new NotificationRequest("Not fraudster"));
+        notificationClient.sendNotification(NotificationRequest.builder()
+                .toCustomerId(customer.getId())
+                .toCustomerEmail(customer.getEmail())
+                .message(String.format("Hi %s, welcome to gregodadone.com",
+                        customer.getFirstName()))
+                .build());
     }
 }

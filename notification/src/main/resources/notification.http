@@ -1,0 +1,9 @@
+### Create Customer
+POST http://localhost:8082/api/v1/notification
+Content-Type: application/json
+
+{
+  "toCustomerId": "1",
+  "toCustomerEmail": "grego.dadone@gmail.com",
+  "message": "This is just a test."
+}

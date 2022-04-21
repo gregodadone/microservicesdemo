@@ -1,4 +1,11 @@
 package com.gregodadone.clients.fraud;
 
-public record NotificationRequest(String text) {
+import lombok.Builder;
+
+@Builder
+public record NotificationRequest(
+        int toCustomerId,
+        String toCustomerEmail,
+        String message
+) {
 }

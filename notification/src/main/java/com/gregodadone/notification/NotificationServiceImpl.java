@@ -3,6 +3,8 @@ package com.gregodadone.notification;
 import com.gregodadone.clients.fraud.NotificationRequest;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 public record NotificationServiceImpl(
         NotificationRepository notificationRepository
@@ -10,7 +12,11 @@ public record NotificationServiceImpl(
     @Override
     public void send(NotificationRequest notificationRequest) {
         Notification notification = Notification.builder()
-                .text(notificationRequest.text())
+                .toCustomerId(notificationRequest.toCustomerId())
+                .toCustomerEmail(notificationRequest.toCustomerEmail())
+                .sender("Grego Dadone")
+                .message(notificationRequest.message())
+                .sentAt(LocalDateTime.now())
                 .build();
 
         notificationRepository.saveAndFlush(notification);

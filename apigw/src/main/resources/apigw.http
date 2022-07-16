@@ -1,0 +1,9 @@
+### Create Customer
+POST http://localhost:8083/api/v1/customers
+Content-Type: application/json
+
+{
+  "firstName": "API",
+  "lastName": "GW",
+  "email": "api.gw@gmail.com"
+}
